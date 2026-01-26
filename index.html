@@ -326,12 +326,11 @@
         <div>
           <div class="adminTitle">Admin Controls</div>
           <div class="adminHint">
-            Set an optional <strong>click limit</strong> (auto SOLD OUT when reached). You can still manually mark SOLD OUT anytime.
-            Counts + limits are saved in this browser.
+            Click limits + SOLD OUT are global now (Supabase). Set an optional <strong>click limit</strong> (auto SOLD OUT when reached), or toggle availability manually.
           </div>
         </div>
         <div class="adminRight">
-          <button id="resetCountsBtn" class="smallBtn" type="button">Reset counts</button>
+          <button id="refreshBtn" class="smallBtn" type="button">Refresh</button>
           <button id="lockBtn" class="smallBtn" type="button">Lock</button>
         </div>
       </div>
@@ -372,11 +371,11 @@
       <!-- Friends hut -->
       <div class="toggleRow">
         <div class="toggleLabel"><strong>$349</strong> — Friends' hut</div>
-        <label class="switchWrap">Available <input id="toggle349a" type="checkbox" /></label>
+        <label class="switchWrap">Available <input id="toggle349" type="checkbox" /></label>
         <div class="metaLine" style="grid-column: 1 / -1;">
-          <span class="pill">Clicks: <strong id="count349a">0</strong></span>
+          <span class="pill">Clicks: <strong id="count349">0</strong></span>
           <span class="pill">Limit:</span>
-          <input id="limit349a" class="limitInput" type="number" min="0" step="1" placeholder="∞" />
+          <input id="limit349" class="limitInput" type="number" min="0" step="1" placeholder="∞" />
         </div>
       </div>
 
@@ -395,77 +394,62 @@
     <!-- Cards -->
     <div class="grid">
       <!-- 299 Party Yurt -->
-      <div id="card299" class="card">
+      <div id="card299" class="card" data-key="a299">
         <div class="soldOutStamp"><span>SOLD OUT</span></div>
-        <div class="price">$299: Party Yurt</div>
+        <div class="price" id="title299">$299: Party Yurt</div>
         <div class="divider"></div>
-        <div class="desc">4 people capacity, 🛌 1 queen, 2 twin beds</div>
+        <div class="desc" id="sub299">4 people capacity, 🛌 1 queen, 2 twin beds</div>
 
-        <a id="pay299" class="btn"
-           href="venmo://paycharge?txn=pay&recipients=aaron_levy&amount=299&note=Camping%20sequoia"
-        >Pay $299 on Venmo</a>
-
-        <img class="optPhoto" src="yurt4.png" alt="Party Yurt photo (4 people)" />
+        <a id="pay299" class="btn" href="#" role="button">Pay $299 on Venmo</a>
+        <img class="optPhoto" id="img299" src="yurt4.png" alt="Party Yurt photo (4 people)" />
         <div class="tiny">@aaron_levy</div>
       </div>
 
       <!-- 449 Lovers Yurt -->
-      <div id="card449" class="card">
+      <div id="card449" class="card" data-key="a449">
         <div class="soldOutStamp"><span>SOLD OUT</span></div>
-        <div class="price">$449: Lovers Yurt</div>
+        <div class="price" id="title449">$449: Lovers Yurt</div>
         <div class="divider"></div>
-        <div class="desc">2 people capacity, 🛌 1 queen bed</div>
+        <div class="desc" id="sub449">2 people capacity, 🛌 1 queen bed</div>
 
-        <a id="pay449" class="btn green"
-           href="venmo://paycharge?txn=pay&recipients=aaron_levy&amount=449&note=Camping%20sequoia"
-        >Pay $449 on Venmo</a>
-
-        <img class="optPhoto" src="yurt2.png" alt="Lovers Yurt photo (2 people)" />
+        <a id="pay449" class="btn green" href="#" role="button">Pay $449 on Venmo</a>
+        <img class="optPhoto" id="img449" src="yurt2.png" alt="Lovers Yurt photo (2 people)" />
         <div class="tiny">@aaron_levy</div>
       </div>
 
       <!-- 499 Cabins -->
-      <div id="card499" class="card">
+      <div id="card499" class="card" data-key="a499">
         <div class="soldOutStamp"><span>SOLD OUT</span></div>
-        <div class="price">$499: Cabins</div>
+        <div class="price" id="title499">$499: Cabins</div>
         <div class="divider"></div>
-        <div class="desc">2 to 8 people per cabin, 🛌 queen beds</div>
+        <div class="desc" id="sub499">2 to 8 people per cabin, 🛌 queen beds</div>
 
-        <a id="pay499" class="btn amber"
-           href="venmo://paycharge?txn=pay&recipients=aaron_levy&amount=499&note=Camping%20sequoia"
-        >Pay $499 on Venmo</a>
-
-        <img class="optPhoto" src="cabin.png" alt="Cabin photo" />
+        <a id="pay499" class="btn amber" href="#" role="button">Pay $499 on Venmo</a>
+        <img class="optPhoto" id="img499" src="cabin.png" alt="Cabin photo" />
         <div class="tiny">@aaron_levy</div>
       </div>
 
       <!-- 349 Friends' hut -->
-      <div id="card349a" class="card">
+      <div id="card349" class="card" data-key="a349">
         <div class="soldOutStamp"><span>SOLD OUT</span></div>
-        <div class="price">$349: Friends' hut</div>
+        <div class="price" id="title349">$349: Friends' hut</div>
         <div class="divider"></div>
-        <div class="desc">2 people capacity, 🛌 2 twin beds</div>
+        <div class="desc" id="sub349">2 people capacity, 🛌 2 twin beds</div>
 
-        <a id="pay349a" class="btn purple"
-           href="venmo://paycharge?txn=pay&recipients=aaron_levy&amount=349&note=Camping%20sequoia"
-        >Pay $349 on Venmo</a>
-
-        <img class="optPhoto" src="bunk.png" alt="Bunk / Friends hut photo" />
+        <a id="pay349" class="btn purple" href="#" role="button">Pay $349 on Venmo</a>
+        <img class="optPhoto" id="img349" src="bunk.png" alt="Bunk / Friends hut photo" />
         <div class="tiny">@aaron_levy</div>
       </div>
 
       <!-- 300 Van lifers -->
-      <div id="card300" class="card">
+      <div id="card300" class="card" data-key="a300">
         <div class="soldOutStamp"><span>SOLD OUT</span></div>
-        <div class="price">$300: Van lifers</div>
+        <div class="price" id="title300">$300: Van lifers</div>
         <div class="divider"></div>
-        <div class="desc">BYO camper van — No hookups</div>
+        <div class="desc" id="sub300">BYO camper van — No hookups</div>
 
-        <a id="pay300" class="btn rose"
-           href="venmo://paycharge?txn=pay&recipients=aaron_levy&amount=300&note=Camping%20sequoia"
-        >Pay $300 on Venmo</a>
-
-        <img class="optPhoto" src="van.png" alt="Camper van photo" />
+        <a id="pay300" class="btn rose" href="#" role="button">Pay $300 on Venmo</a>
+        <img class="optPhoto" id="img300" src="van.png" alt="Camper van photo" />
         <div class="tiny">@aaron_levy</div>
       </div>
     </div>
@@ -512,15 +496,46 @@
   </div>
 
   <script>
-    // ----- Welcome modal on load -----
+    // =========================
+    // CONFIG
+    // =========================
+    const ADMIN_PASSWORD = "Seq123";
+    const ADMIN_TOKEN_STORAGE_KEY = "sequoia_admin_token_v1";
+    const NOTE_TEXT = "Camping sequoia";
+    const RECIPIENT = "aaron_levy";
+    const POLL_MS = 8000;
+
+    const ID_MAP = {
+      a299: { card: "card299", pay: "pay299", title: "title299", sub: "sub299", img: "img299", toggle: "toggle299", count: "count299", limit: "limit299" },
+      a449: { card: "card449", pay: "pay449", title: "title449", sub: "sub449", img: "img449", toggle: "toggle449", count: "count449", limit: "limit449" },
+      a499: { card: "card499", pay: "pay499", title: "title499", sub: "sub499", img: "img499", toggle: "toggle499", count: "count499", limit: "limit499" },
+      a349: { card: "card349", pay: "pay349", title: "title349", sub: "sub349", img: "img349", toggle: "toggle349", count: "count349", limit: "limit349" },
+      a300: { card: "card300", pay: "pay300", title: "title300", sub: "sub300", img: "img300", toggle: "toggle300", count: "count300", limit: "limit300" },
+    };
+
+    const labels = {
+      a299: "$299: Party Yurt",
+      a449: "$449: Lovers Yurt",
+      a499: "$499: Cabins",
+      a349: "$349: Friends' hut",
+      a300: "$300: Van lifers",
+    };
+
+    // =========================
+    // WELCOME MODAL
+    // =========================
     function closeWelcome(){
       document.getElementById("welcomeOverlay").classList.remove("show");
     }
+    window.closeWelcome = closeWelcome;
+
     window.addEventListener("load", () => {
       document.getElementById("welcomeOverlay").classList.add("show");
     });
 
-    // ----- Toast helpers -----
+    // =========================
+    // TOAST
+    // =========================
     let toastTimer = null;
     function showToast(message) {
       const toast = document.getElementById("toast");
@@ -534,202 +549,182 @@
       if (toastTimer) clearTimeout(toastTimer);
       toastTimer = null;
     }
+    window.hideToast = hideToast;
 
-    // ----- Option C fallback: try deep link then web -----
-    function venmoFallback(amount) {
+    // =========================
+    // VENMO LINK + FALLBACK
+    // =========================
+    function venmoDeepLink(amount){
+      const note = encodeURIComponent(NOTE_TEXT);
+      return `venmo://paycharge?txn=pay&recipients=${encodeURIComponent(RECIPIENT)}&amount=${encodeURIComponent(amount)}&note=${note}`;
+    }
+    function venmoWebFallback(amount){
+      const note = encodeURIComponent(NOTE_TEXT);
+      return `https://venmo.com/${encodeURIComponent(RECIPIENT)}?txn=pay&amount=${encodeURIComponent(amount)}&note=${note}`;
+    }
+
+    function openVenmo(amount){
+      // attempt deep link
+      window.location.href = venmoDeepLink(amount);
+      // fallback to web after a short delay
       setTimeout(() => {
-        window.location.href =
-          "https://venmo.com/aaron_levy?txn=pay&amount=" + encodeURIComponent(amount) +
-          "&note=" + encodeURIComponent("Camping sequoia");
+        window.location.href = venmoWebFallback(amount);
       }, 800);
     }
 
-    // ----- Admin lock/unlock + availability + counters/limits -----
-    const ADMIN_PASSWORD = "Seq123";
+    // =========================
+    // BACKEND HELPERS
+    // =========================
+    async function apiGetState(){
+      const res = await fetch("/.netlify/functions/get-state", { cache: "no-store" });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json?.error || "Failed to load state");
+      return json;
+    }
 
+    async function apiClick(id){
+      const res = await fetch("/.netlify/functions/click", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ id })
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json?.error || "Click failed");
+      return json; // {ok, soldOut}
+    }
+
+    async function apiAdminUpdate({ id, available, click_limit }){
+      const token = localStorage.getItem(ADMIN_TOKEN_STORAGE_KEY) || "";
+      if (!token) throw new Error("Missing admin token");
+
+      const res = await fetch("/.netlify/functions/admin-update", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-admin-token": token
+        },
+        body: JSON.stringify({ id, available, click_limit })
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json?.error || "Admin update failed");
+      return json;
+    }
+
+    // =========================
+    // UI APPLY
+    // =========================
+    function setCardSoldOut(cardEl, soldOut){
+      if (soldOut) cardEl.classList.add("soldOut");
+      else cardEl.classList.remove("soldOut");
+    }
+
+    function applyOptionRow(opt){
+      // opt: {id,title,subtitle,amount,image,available,click_limit,clicks}
+      const map = ID_MAP[opt.id];
+      if (!map) return;
+
+      const card = document.getElementById(map.card);
+      const pay = document.getElementById(map.pay);
+      const title = document.getElementById(map.title);
+      const sub = document.getElementById(map.sub);
+      const img = document.getElementById(map.img);
+
+      // text
+      if (title) title.textContent = opt.title || labels[opt.id] || "";
+      if (sub) sub.textContent = opt.subtitle || "";
+      if (img && opt.image) img.src = opt.image;
+
+      // sold out state: available=false => sold out
+      setCardSoldOut(card, !opt.available);
+
+      // button label + click handler
+      const amount = opt.amount;
+      pay.textContent = `Pay $${amount} on Venmo`;
+      pay.href = venmoDeepLink(amount); // helps some browsers
+      pay.onclick = async (e) => {
+        e.preventDefault();
+
+        // if sold out, block immediately
+        if (!opt.available || card.classList.contains("soldOut")){
+          showToast(`The ${labels[opt.id]} option is sold out. Please choose from remaining options.`);
+          return false;
+        }
+
+        try{
+          const result = await apiClick(opt.id);
+          // refresh state right after click so UI updates everywhere
+          await refreshFromBackend({ toastSoldOutForId: result?.soldOut ? opt.id : null });
+
+          if (result?.soldOut){
+            showToast(`The ${labels[opt.id]} option is sold out. Please choose from remaining options.`);
+            return false;
+          }
+
+          // open venmo
+          openVenmo(amount);
+          return true;
+        }catch(err){
+          showToast(err?.message || "Something went wrong. Try the QR code below.");
+          return false;
+        }
+      };
+    }
+
+    function applyAdminRow(opt){
+      const map = ID_MAP[opt.id];
+      if (!map) return;
+
+      const toggle = document.getElementById(map.toggle);
+      const count = document.getElementById(map.count);
+      const limit = document.getElementById(map.limit);
+
+      if (toggle) toggle.checked = !!opt.available;
+      if (count) count.textContent = String(opt.clicks ?? 0);
+      if (limit) limit.value = (opt.click_limit === null || typeof opt.click_limit === "undefined") ? "" : String(opt.click_limit);
+    }
+
+    let lastOptionsById = {};
+
+    async function refreshFromBackend({ toastSoldOutForId = null } = {}){
+      const data = await apiGetState();
+      const options = data?.options || [];
+
+      const byId = {};
+      for (const opt of options) byId[opt.id] = opt;
+
+      // apply all UI
+      for (const opt of options){
+        applyOptionRow(opt);
+        applyAdminRow(opt);
+
+        // sold-out toast only on transitions, or if requested
+        const prev = lastOptionsById[opt.id];
+        if (prev && prev.available && !opt.available){
+          showToast(`The ${labels[opt.id]} option is sold out. Please choose from remaining options.`);
+        }
+      }
+
+      lastOptionsById = byId;
+
+      // if we want a toast for a specific id (after click)
+      if (toastSoldOutForId && byId[toastSoldOutForId] && !byId[toastSoldOutForId].available){
+        showToast(`The ${labels[toastSoldOutForId]} option is sold out. Please choose from remaining options.`);
+      }
+    }
+
+    // =========================
+    // ADMIN LOCK/UNLOCK
+    // =========================
     const els = {
       adminBtn: document.getElementById("adminBtn"),
       adminPanel: document.getElementById("adminPanel"),
       lockPill: document.getElementById("lockPill"),
       lockBtn: document.getElementById("lockBtn"),
-      resetCountsBtn: document.getElementById("resetCountsBtn"),
-
-      // availability toggles
-      toggle299: document.getElementById("toggle299"),
-      toggle449: document.getElementById("toggle449"),
-      toggle499: document.getElementById("toggle499"),
-      toggle349a: document.getElementById("toggle349a"),
-      toggle300: document.getElementById("toggle300"),
-
-      // limit inputs
-      limit299: document.getElementById("limit299"),
-      limit449: document.getElementById("limit449"),
-      limit499: document.getElementById("limit499"),
-      limit349a: document.getElementById("limit349a"),
-      limit300: document.getElementById("limit300"),
-
-      // counts (admin display)
-      count299: document.getElementById("count299"),
-      count449: document.getElementById("count449"),
-      count499: document.getElementById("count499"),
-      count349a: document.getElementById("count349a"),
-      count300: document.getElementById("count300"),
-
-      // cards
-      card299: document.getElementById("card299"),
-      card449: document.getElementById("card449"),
-      card499: document.getElementById("card499"),
-      card349a: document.getElementById("card349a"),
-      card300: document.getElementById("card300"),
-
-      // pay links
-      pay299: document.getElementById("pay299"),
-      pay449: document.getElementById("pay449"),
-      pay499: document.getElementById("pay499"),
-      pay349a: document.getElementById("pay349a"),
-      pay300: document.getElementById("pay300"),
+      refreshBtn: document.getElementById("refreshBtn"),
     };
 
-    const STORAGE_KEY = "sequoia_state_v8";
-    const LOCK_KEY = "sequoia_admin_unlocked_v8";
+    const LOCK_KEY = "sequoia_admin_unlocked_v9";
 
-    const labels = {
-      a299: "$299: Party Yurt",
-      a449: "$449: Lovers Yurt",
-      a499: "$499: Cabins",
-      a349a: "$349: Friends' hut",
-      a300: "$300: Van lifers",
-    };
-
-    const amounts = { a299: 299, a449: 449, a499: 499, a349a: 349, a300: 300 };
-
-    function defaultState(){
-      return {
-        // manual availability
-        available: { a299:true, a449:true, a499:true, a349a:true, a300:true },
-        // click counts
-        counts: { a299:0, a449:0, a499:0, a349a:0, a300:0 },
-        // optional limits: null = unlimited
-        limits: { a299:null, a449:null, a499:null, a349a:null, a300:null }
-      };
-    }
-
-    function loadState(){
-      let state = defaultState();
-      try{
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) state = { ...state, ...JSON.parse(raw) };
-      }catch(e){}
-
-      // hydrate UI
-      els.toggle299.checked = !!state.available.a299;
-      els.toggle449.checked = !!state.available.a449;
-      els.toggle499.checked = !!state.available.a499;
-      els.toggle349a.checked = !!state.available.a349a;
-      els.toggle300.checked = !!state.available.a300;
-
-      els.count299.textContent = state.counts.a299 ?? 0;
-      els.count449.textContent = state.counts.a449 ?? 0;
-      els.count499.textContent = state.counts.a499 ?? 0;
-      els.count349a.textContent = state.counts.a349a ?? 0;
-      els.count300.textContent = state.counts.a300 ?? 0;
-
-      els.limit299.value = state.limits.a299 ?? "";
-      els.limit449.value = state.limits.a449 ?? "";
-      els.limit499.value = state.limits.a499 ?? "";
-      els.limit349a.value = state.limits.a349a ?? "";
-      els.limit300.value = state.limits.a300 ?? "";
-
-      // apply auto-sold-out based on limits before rendering
-      state = enforceLimits(state, false);
-      saveState(state, true);
-      applyAvailability(state, false);
-      return state;
-    }
-
-    function saveState(state, silent=false){
-      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
-      if (!silent) refreshAdminNumbers(state);
-    }
-
-    function refreshAdminNumbers(state){
-      els.count299.textContent = state.counts.a299 ?? 0;
-      els.count449.textContent = state.counts.a449 ?? 0;
-      els.count499.textContent = state.counts.a499 ?? 0;
-      els.count349a.textContent = state.counts.a349a ?? 0;
-      els.count300.textContent = state.counts.a300 ?? 0;
-    }
-
-    function setCardAvailability(cardEl, isAvailable){
-      if (isAvailable) cardEl.classList.remove("soldOut");
-      else cardEl.classList.add("soldOut");
-    }
-
-    function applyAvailability(state, shouldToast){
-      handleOne(els.card299, state.available.a299, labels.a299, shouldToast);
-      handleOne(els.card449, state.available.a449, labels.a449, shouldToast);
-      handleOne(els.card499, state.available.a499, labels.a499, shouldToast);
-      handleOne(els.card349a, state.available.a349a, labels.a349a, shouldToast);
-      handleOne(els.card300, state.available.a300, labels.a300, shouldToast);
-
-      // attach fallback behavior to all pay links (works only when not sold out)
-      els.pay299.onclick = () => { onPayClick("a299"); return true; };
-      els.pay449.onclick = () => { onPayClick("a449"); return true; };
-      els.pay499.onclick = () => { onPayClick("a499"); return true; };
-      els.pay349a.onclick = () => { onPayClick("a349a"); return true; };
-      els.pay300.onclick = () => { onPayClick("a300"); return true; };
-    }
-
-    function handleOne(cardEl, isAvailable, label, shouldToast){
-      const wasSoldOut = cardEl.classList.contains("soldOut");
-      setCardAvailability(cardEl, isAvailable);
-      if (shouldToast && !isAvailable && !wasSoldOut){
-        showToast(`The ${label} option is sold out. Please choose from remaining options.`);
-      }
-    }
-
-    function enforceLimits(state, shouldToast){
-      // if limit is set and count >= limit, force sold out
-      for (const key of Object.keys(state.available)){
-        const lim = state.limits[key];
-        const cnt = state.counts[key] ?? 0;
-        if (typeof lim === "number" && lim >= 0 && cnt >= lim){
-          if (state.available[key] !== false && shouldToast){
-            showToast(`The ${labels[key]} option is sold out. Please choose from remaining options.`);
-          }
-          state.available[key] = false;
-        }
-      }
-      return state;
-    }
-
-    // ----- Pay click handler: increment count, enforce limit, then fallback -----
-    let state = null;
-
-    function onPayClick(key){
-      // if sold out, block
-      if (!state.available[key]){
-        showToast(`The ${labels[key]} option is sold out. Please choose from remaining options.`);
-        return false;
-      }
-
-      // increment click count
-      state.counts[key] = (state.counts[key] ?? 0) + 1;
-
-      // update admin numbers immediately
-      refreshAdminNumbers(state);
-
-      // enforce limit after increment
-      state = enforceLimits(state, true);
-      saveState(state, true);
-      applyAvailability(state, false);
-
-      // do deep link fallback after click
-      venmoFallback(amounts[key]);
-      return true;
-    }
-
-    // ----- Admin lock/unlock -----
     function setLockedUI(isUnlocked){
       if (isUnlocked){
         els.adminPanel.style.display = "block";
@@ -741,101 +736,119 @@
         els.lockPill.textContent = "Locked";
       }
     }
+
     function getUnlocked(){ return localStorage.getItem(LOCK_KEY) === "true"; }
     function setUnlocked(val){
-      try{ localStorage.setItem(LOCK_KEY, val ? "true" : "false"); }catch(e){}
+      localStorage.setItem(LOCK_KEY, val ? "true" : "false");
       setLockedUI(val);
     }
 
-    els.adminBtn.addEventListener("click", () => {
+    function ensureAdminToken(){
+      const existing = localStorage.getItem(ADMIN_TOKEN_STORAGE_KEY);
+      if (existing) return true;
+
+      const token = prompt("Paste your Netlify ADMIN_TOKEN (Site config → Environment variables):");
+      if (!token) return false;
+      localStorage.setItem(ADMIN_TOKEN_STORAGE_KEY, token.trim());
+      return true;
+    }
+
+    els.adminBtn.addEventListener("click", async () => {
       if (getUnlocked()){
-        els.adminPanel.style.display = (els.adminPanel.style.display === "none" ? "block" : "none");
-        els.adminPanel.setAttribute("aria-hidden", els.adminPanel.style.display === "none" ? "true" : "false");
+        // toggle panel open/close
+        const isHidden = els.adminPanel.style.display === "none";
+        els.adminPanel.style.display = isHidden ? "block" : "none";
+        els.adminPanel.setAttribute("aria-hidden", isHidden ? "false" : "true");
         return;
       }
+
       const pw = prompt("Enter password for Sina’s backdoor access:");
-      if (pw === ADMIN_PASSWORD) setUnlocked(true);
-      else if (pw !== null) showToast("Wrong password.");
+      if (pw !== ADMIN_PASSWORD){
+        if (pw !== null) showToast("Wrong password.");
+        return;
+      }
+
+      // optional: capture admin token once so server updates can work
+      if (!ensureAdminToken()){
+        showToast("Admin token not set. Admin changes won’t save yet.");
+      }
+
+      setUnlocked(true);
+      try{ await refreshFromBackend(); }catch(e){}
     });
+
     els.lockBtn.addEventListener("click", () => setUnlocked(false));
-
-    // ----- Manual availability toggles -----
-    function bindAvailabilityToggle(checkboxEl, key){
-      checkboxEl.addEventListener("change", () => {
-        state.available[key] = checkboxEl.checked;
-        state = enforceLimits(state, true); // if already over limit, will force SOLD OUT
-        saveState(state);
-        applyAvailability(state, false);
-      });
-    }
-    bindAvailabilityToggle(els.toggle299, "a299");
-    bindAvailabilityToggle(els.toggle449, "a449");
-    bindAvailabilityToggle(els.toggle499, "a499");
-    bindAvailabilityToggle(els.toggle349a, "a349a");
-    bindAvailabilityToggle(els.toggle300, "a300");
-
-    // ----- Limit inputs -----
-    function bindLimitInput(inputEl, key){
-      inputEl.addEventListener("input", () => {
-        const v = inputEl.value.trim();
-        if (v === ""){
-          state.limits[key] = null; // unlimited
-        }else{
-          const n = Number(v);
-          state.limits[key] = (Number.isFinite(n) && n >= 0) ? Math.floor(n) : null;
-        }
-        state = enforceLimits(state, false);
-        // sync checkbox if forced sold out
-        els["toggle" + key.replace("a","")].checked = !!state.available[key]; // safe for our keys
-        saveState(state);
-        applyAvailability(state, false);
-      });
-    }
-    bindLimitInput(els.limit299, "a299");
-    bindLimitInput(els.limit449, "a449");
-    bindLimitInput(els.limit499, "a499");
-    bindLimitInput(els.limit349a, "a349a");
-    bindLimitInput(els.limit300, "a300");
-
-    // ----- Reset counts button -----
-    els.resetCountsBtn.addEventListener("click", () => {
-      if (!confirm("Reset click counts for ALL options?")) return;
-      for (const k of Object.keys(state.counts)) state.counts[k] = 0;
-      // if something was only sold out because of limits, re-enabling is your choice:
-      // we do NOT auto-enable. You can toggle on manually.
-      saveState(state);
-      refreshAdminNumbers(state);
+    els.refreshBtn.addEventListener("click", async () => {
+      try{ await refreshFromBackend(); }
+      catch(e){ showToast(e?.message || "Refresh failed"); }
     });
 
-    // ----- Welcome modal -----
-    function closeWelcome(){
-      document.getElementById("welcomeOverlay").classList.remove("show");
-    }
-    window.closeWelcome = closeWelcome; // used by button
+    // bind admin controls to backend updates
+    function bindAdminControls(id){
+      const map = ID_MAP[id];
+      const toggle = document.getElementById(map.toggle);
+      const limit = document.getElementById(map.limit);
 
-    window.addEventListener("load", () => {
-      document.getElementById("welcomeOverlay").classList.add("show");
-    });
+      if (toggle){
+        toggle.addEventListener("change", async () => {
+          try{
+            if (!ensureAdminToken()) throw new Error("Admin token not set");
+            await apiAdminUpdate({ id, available: toggle.checked, click_limit: undefined });
+            await refreshFromBackend();
+          }catch(e){
+            showToast(e?.message || "Admin update failed");
+            // revert toggle to last known state
+            const prev = lastOptionsById[id];
+            if (prev) toggle.checked = !!prev.available;
+          }
+        });
+      }
+
+      if (limit){
+        let t = null;
+        limit.addEventListener("input", () => {
+          // debounce to avoid spamming the function while typing
+          if (t) clearTimeout(t);
+          t = setTimeout(async () => {
+            try{
+              if (!ensureAdminToken()) throw new Error("Admin token not set");
+
+              const raw = limit.value.trim();
+              const click_limit = raw === "" ? null : Math.max(0, Math.floor(Number(raw)));
+
+              if (raw !== "" && !Number.isFinite(click_limit)) throw new Error("Limit must be a number");
+
+              // keep availability as-is (server will auto-sold-out on clicks)
+              await apiAdminUpdate({ id, available: undefined, click_limit });
+              await refreshFromBackend();
+            }catch(e){
+              showToast(e?.message || "Limit update failed");
+              // revert to last known
+              const prev = lastOptionsById[id];
+              if (prev) limit.value = (prev.click_limit === null || typeof prev.click_limit === "undefined") ? "" : String(prev.click_limit);
+            }
+          }, 450);
+        });
+      }
+    }
+
+    for (const id of Object.keys(ID_MAP)) bindAdminControls(id);
 
     // init
-    state = loadState();
     setLockedUI(getUnlocked());
 
-    // also attach venmo fallback to all pay links (in case browser ignores JS)
-    document.getElementById("pay299").addEventListener("click", () => venmoFallback(299));
-    document.getElementById("pay449").addEventListener("click", () => venmoFallback(449));
-    document.getElementById("pay499").addEventListener("click", () => venmoFallback(499));
-    document.getElementById("pay349a").addEventListener("click", () => venmoFallback(349));
-    document.getElementById("pay300").addEventListener("click", () => venmoFallback(300));
-  </script>
+    (async function init(){
+      try{
+        await refreshFromBackend();
+      }catch(e){
+        showToast("Could not load live availability. Try refreshing, or use the QR code below.");
+      }
 
-  <!-- Welcome modal -->
-  <div id="welcomeOverlay" class="welcomeOverlay" role="dialog" aria-modal="true">
-    <div class="welcomeCard">
-      <div class="welcomeTitle">We’re glad you are here ◡̈</div>
-      <div class="welcomeMsg">All prices is per person.</div>
-      <button class="welcomeBtn" type="button" onclick="closeWelcome()">Let’s go</button>
-    </div>
-  </div>
+      // poll so other users see updates without refreshing
+      setInterval(async () => {
+        try{ await refreshFromBackend(); }catch(e){}
+      }, POLL_MS);
+    })();
+  </script>
 </body>
 </html>
