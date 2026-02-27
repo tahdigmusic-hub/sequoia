@@ -337,12 +337,12 @@
 
       <!-- Party Yurt -->
       <div class="toggleRow">
-        <div class="toggleLabel"><strong>$399</strong> — Party Yurt</div>
-        <label class="switchWrap">Available <input id="toggle399" type="checkbox" /></label>
+        <div class="toggleLabel"><strong>$299</strong> — Party Yurt</div>
+        <label class="switchWrap">Available <input id="toggle299" type="checkbox" /></label>
         <div class="metaLine" style="grid-column: 1 / -1;">
-          <span class="pill">Clicks: <strong id="count399">0</strong></span>
+          <span class="pill">Clicks: <strong id="count299">0</strong></span>
           <span class="pill">Limit:</span>
-          <input id="limit399" class="limitInput" type="number" min="0" step="1" placeholder="∞" />
+          <input id="limit299" class="limitInput" type="number" min="0" step="1" placeholder="∞" />
         </div>
       </div>
 
@@ -370,12 +370,12 @@
 
       <!-- Friends hut -->
       <div class="toggleRow">
-        <div class="toggleLabel"><strong>$375</strong> — Friends' hut</div>
-        <label class="switchWrap">Available <input id="toggle375" type="checkbox" /></label>
+        <div class="toggleLabel"><strong>$349</strong> — Friends' hut</div>
+        <label class="switchWrap">Available <input id="toggle349" type="checkbox" /></label>
         <div class="metaLine" style="grid-column: 1 / -1;">
-          <span class="pill">Clicks: <strong id="count375">0</strong></span>
+          <span class="pill">Clicks: <strong id="count349">0</strong></span>
           <span class="pill">Limit:</span>
-          <input id="limit375" class="limitInput" type="number" min="0" step="1" placeholder="∞" />
+          <input id="limit349" class="limitInput" type="number" min="0" step="1" placeholder="∞" />
         </div>
       </div>
 
@@ -393,15 +393,15 @@
 
     <!-- Cards -->
     <div class="grid">
-      <!-- 399 Party Yurt -->
-      <div id="card399" class="card" data-key="399">
+      <!-- 299 Party Yurt -->
+      <div id="card299" class="card" data-key="299">
         <div class="soldOutStamp"><span>SOLD OUT</span></div>
-        <div class="price" id="title399">$399: Party Yurt</div>
+        <div class="price" id="title299">$299: Party Yurt</div>
         <div class="divider"></div>
-        <div class="desc" id="sub399">4 people capacity. 🛌 1 queen & 2 twin beds. Communal bath house/toilets.</div>
+        <div class="desc" id="sub299">4 people capacity. 🛌 1 queen & 2 twin beds. Communal bath house/toilets.</div>
 
-        <a id="pay399" class="btn" href="#" role="button">Pay $399 on Venmo</a>
-        <img class="optPhoto" id="img399" src="yurt4.png" alt="Party Yurt photo (4 people)" />
+        <a id="pay299" class="btn" href="#" role="button">Pay $299 on Venmo</a>
+        <img class="optPhoto" id="img299" src="yurt4.png" alt="Party Yurt photo (4 people)" />
         <div class="tiny">@sinabigdeli</div>
       </div>
 
@@ -429,15 +429,15 @@
         <div class="tiny">@sinabigdeli</div>
       </div>
 
-      <!-- 375 Friends' hut -->
-      <div id="card375" class="card" data-key="a375">
+      <!-- 349 Friends' hut -->
+      <div id="card349" class="card" data-key="a349">
         <div class="soldOutStamp"><span>SOLD OUT</span></div>
-        <div class="price" id="title375">$375: Friends' hut</div>
+        <div class="price" id="title349">$349: Friends' hut</div>
         <div class="divider"></div>
-        <div class="desc" id="sub375">2 people capacity. 🛌 2 twin beds. Communal bath house/toilets.</div>
+        <div class="desc" id="sub349">2 people capacity. 🛌 2 twin beds. Communal bath house/toilets.</div>
 
-        <a id="pay375" class="btn purple" href="#" role="button">Pay $375 on Venmo</a>
-        <img class="optPhoto" id="img375" src="bunk.png" alt="Bunk / Friends hut photo" />
+        <a id="pay349" class="btn purple" href="#" role="button">Pay $349 on Venmo</a>
+        <img class="optPhoto" id="img349" src="bunk.png" alt="Bunk / Friends hut photo" />
         <div class="tiny">@sinabigdeli</div>
       </div>
 
@@ -506,18 +506,18 @@
     const POLL_MS = 8000;
 
     const ID_MAP = {
-      a399: { card: "card399", pay: "pay399", title: "title399", sub: "sub399", img: "img399", toggle: "toggle399", count: "count399", limit: "limit399" },
+      a299: { card: "card299", pay: "pay299", title: "title299", sub: "sub299", img: "img299", toggle: "toggle299", count: "count299", limit: "limit299" },
       a449: { card: "card449", pay: "pay449", title: "title449", sub: "sub449", img: "img449", toggle: "toggle449", count: "count449", limit: "limit449" },
       a499: { card: "card499", pay: "pay499", title: "title499", sub: "sub499", img: "img499", toggle: "toggle499", count: "count499", limit: "limit499" },
-      a375: { card: "card375", pay: "pay375", title: "title375", sub: "sub375", img: "img375", toggle: "toggle375", count: "count375", limit: "limit375" },
+      a349: { card: "card349", pay: "pay349", title: "title349", sub: "sub349", img: "img349", toggle: "toggle349", count: "count349", limit: "limit349" },
       a300: { card: "card300", pay: "pay300", title: "title300", sub: "sub300", img: "img300", toggle: "toggle300", count: "count300", limit: "limit300" },
     };
 
     const labels = {
-      a399: "$399: Party Yurt",
+      a299: "$299: Party Yurt",
       a449: "$449: Lovers Yurt",
       a499: "$499: Cabins",
-      a375: "$375: Friends' hut",
+      a349: "$349: Friends' hut",
       a300: "$300: Van lifers",
     };
 
